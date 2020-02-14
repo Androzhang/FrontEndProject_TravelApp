@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<div class="header">
+  <h2>Jiali's Travel App</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>What's your trip?</h2>
+         <section id="search">
+          <div>
+            <label id="search-trip-location-label" for="search-trip-location"
+              >My trip to:</label
+            >
+            <input
+              type="text"
+              id="search-trip-location"
+              placeholder="Enter location"
+              list="search-trip-locations"
+              autocomplete="on"
+            />
+          </div>
+          <div>
+            <label id="search-trip-date-label" for="search-trip-date"
+              >Departing:</label
+            >
+            <input type="date" id="search-trip-date"/>
+          </div>
+          <div id="search-trip-buttons">
+            <button id="search-trip-save" onclick="Client.onSubmit(event)">Save trip</button>
+            <!-- <button id="search-trip-reset" type="reset">Reset</button> -->
+          </div>
+      </section>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Your trip</h2>
+      <div id="displayGeo"></div>
+      <div id="displayTripLength"></div>
+      <div id="displayWeather"></div>
+      <div id="displayContent"></div>
+    </div>
+
+  </div>
+</div>
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script>
+
+</body>
+</html>
