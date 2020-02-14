@@ -33,13 +33,16 @@ async function fetchData(location, tripDate, futureForecast) {
   // console.log(geo);
   console.log(weather);
   const datepicker = document.getElementById('search-trip-date');
+  const endDatepicker = document.getElementById('trip-end-date');
   let selectedTime = new Date(datepicker.value);
+  let endDateTime = new Date(endDatepicker.value);
   const currentTime = new Date();
   const differenceTime = selectedTime.getTime() - currentTime.getTime();
+  const tripLength = (endDateTime.getTime() - selectedTime.getTime())/ (1000 * 3600 * 24);
   //days left for departure
   const differenceDays = differenceTime/ (1000 * 3600 * 24);
   document.getElementById('displayGeo').innerHTML=`<h2>My trip to: ${geo.name}, ${geo.countryName}</h2>`;
-  document.getElementById('displayTripLength').innerHTML=`<h3>Departing: ${datepicker.value}, ${geo.name} is ${Math.round(differenceDays)} days away</h3>`;
+  document.getElementById('displayTripLength').innerHTML=`<h3>Departing: ${datepicker.value}, ${geo.name} is ${Math.round(differenceDays)} days away. Trip ends: ${endDatepicker.value} and trip length is ${Math.round(tripLength)}</h3>`;
   document.getElementById('displayWeather').innerHTML=`<p>${futureForecast ? 'Forecasted' : 'Current'} weather is: ${weather.daily.data[0].summary},High ${weather.daily.data[0].temperatureHigh},Low ${weather.daily.data[0].temperatureLow}</p>`;
   document.getElementById('displayContent').innerHTML = img;
 }

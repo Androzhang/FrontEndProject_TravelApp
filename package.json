@@ -4,7 +4,7 @@
   "description": "Jiali's travel app on Udacity",
   "main": "server.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "test": "jest",
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "start": "node ./src/server/server.js",
     "build": "webpack --config webpack.prod.js"
